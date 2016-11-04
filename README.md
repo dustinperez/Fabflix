@@ -19,7 +19,7 @@ The Fabflix website was hosted on a small cluster of AWS EC2 instances running U
 The datastore for this project is MySQL, which is replicated on each server for redundancy in a master-slave configuration. Any machine could process reads, but all writes were forwarded from slaves to the master instance to ensure consistency. The master then propagates the changes via a broadcast to the slaves.
 
 ## Application Stack
-The web application uses Java servlets as provided by Apache Tomcat and defined in the JEE specification. All content is served from java server pages (JSP), using the JSP expression language to avoid the use of scriptlets. For connectivity to the datastore, JDBC is used. The application also makes use of jQuery to make AJAX calls and to provide tooltips. The Google GSON library was used to easily serialize Java objects into JSON and the Google Guava library was also used.
+The web application uses Java servlets as provided by Apache Tomcat and defined in the JEE specification. All content is served from java server pages (JSP), using the JSP expression language to avoid the use of scriptlets. For connectivity to the datastore, JDBC is used. The application also makes use of Bootstrap, as well as jQuery to make AJAX calls and provide tooltips. The Google GSON library was used to easily serialize Java objects into JSON and the Google Guava library was also used.
 
 ## Performance Analytics using Apache JMeter.
 Performance optimizations were measured against the search feature using Apache JMeter. The data collected from JMeter was parsed from CSV files using Python.
