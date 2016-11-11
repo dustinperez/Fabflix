@@ -100,10 +100,6 @@ public class DBConnectionManager {
         }
 
         return dataSource.getConnection();
-//      if (connection == null || connection.isClosed()) {
-//          openConnection();
-//      }
-//      return connection;
     }
 
     /**
@@ -132,42 +128,18 @@ public class DBConnectionManager {
      * establish connection to the database.
      */
     public static void login() {
-        while (true) {
-
-            // System.out.println("Please enter login information.");
-            // // Get login credentials from user.
-            // String userName = Prompt.forWord("\tEnter the username");
-            // String userPassword = Prompt.forWord("\tEnter the password");
-            //
-            // // Revert the user password to empty string if user correctly
-            // entered "password" at login
-            // userPassword = ("password".equals(userPassword) ? "" :
-            // userPassword);
-            //
-            // // Check if login credentials are valid.
-            // if
-            // (!DBConnectionManager.getInstance().getValidUserPasswordsMap().containsKey(userName)
-            // ||
-            // DBConnectionManager.getInstance().getValidUserPasswordsMap().get(userName)
-            // != userPassword) {
-            // System.out.println("ERROR - The username or password entered were
-            // not recognized!");
-            // continue;
-            // }
-
-            // Attempt to establish connection with database.
-            DBConnectionManager.getInstance().setUserName(userName);
-            DBConnectionManager.getInstance().setUserPassword(userPassword);
-            try {
-                if (DBConnectionManager.getInstance().getConnection() != null) {
-                    System.out.println("Login successful..");
-                    return;
-                }
-            } catch (SQLException e) {
-                System.out.println(e.getSQLState());
-                System.out.println("Unable to connect to the database.");
-                System.exit(-1);
+        // Attempt to establish connection with database.
+        DBConnectionManager.getInstance().setUserName(userName);
+        DBConnectionManager.getInstance().setUserPassword(userPassword);
+        try {
+            if (DBConnectionManager.getInstance().getConnection() != null) {
+                System.out.println("Login successful..");
+                return;
             }
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            System.out.println("Unable to connect to the database.");
+            System.exit(-1);
         }
     }
 
