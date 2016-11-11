@@ -24,7 +24,7 @@ public class CreditCardsDAO {
         String sql = String.format(sqlFmtString, id, firstName, lastName, expiration);
 
         try {
-            return (!QueryProcessor.processReadOp(sql).isEmpty() ? true : false);
+            return !QueryProcessor.processReadOp(sql).isEmpty();
         } catch (Exception e) {
             return null;
         }
